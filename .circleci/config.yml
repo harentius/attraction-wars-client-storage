@@ -24,6 +24,6 @@ jobs:
 
 workflows:
   version: 2
-  lint_and_publish:
+  lint:
     jobs:
       - lint
