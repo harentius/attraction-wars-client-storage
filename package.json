@@ -6,6 +6,7 @@
   "license": "ISC",
   "scripts": {
     "build": "webpack --mode production",
+    "build-and-git-add": "npm run build && git add dist/*",
     "lint": "eslint ./src/**/**.js"
   },
   "dependencies": {
@@ -21,7 +22,11 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
+    "pre-commit": "^1.2.2",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8"
-  }
+  },
+  "pre-commit": [
+    "build-and-git-add"
+  ]
 }
