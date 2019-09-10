@@ -4,6 +4,7 @@
   "description": "",
   "author": "",
   "license": "ISC",
+  "main": "dist/index.js",
   "scripts": {
     "build": "webpack --mode production",
     "build-and-git-add": "npm run build && git add dist/*",
