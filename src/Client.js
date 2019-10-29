@@ -22,6 +22,14 @@ class Client {
     this.socket.emit('login', username);
   }
 
+  getConnectionId() {
+    if (!this.isConnected()) {
+      return null;
+    }
+
+    return this.socket.id
+  }
+
   isConnected() {
     return !!this.socket;
   }
