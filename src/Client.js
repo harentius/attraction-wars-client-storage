@@ -14,12 +14,16 @@ class Client {
   }
 
   login(username) {
-    if (this.socket) {
+    if (this.isConnected()) {
       return;
     }
 
     this._connect();
     this.socket.emit('login', username);
+  }
+
+  isConnected() {
+    return !!this.socket;
   }
 
   _connect() {
