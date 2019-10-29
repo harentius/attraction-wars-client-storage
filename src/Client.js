@@ -27,7 +27,7 @@ class Client {
       return null;
     }
 
-    return this.socket.id
+    return this.socket.id;
   }
 
   isConnected() {
