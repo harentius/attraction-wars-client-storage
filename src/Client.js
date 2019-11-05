@@ -23,6 +23,10 @@ class Client {
   }
 
   logout() {
+    if (!this.isConnected()) {
+      return;
+    }
+
     this.socket.disconnect();
   }
 
