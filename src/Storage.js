@@ -4,6 +4,7 @@ class Storage {
   static get WORLD_DATA_CREATED() { return 'world_data_created'; }
   static get CONNECT() { return 'connect'; }
   static get DISCONNECT() { return 'disconnect'; }
+  static get AFTER_REFRESH() { return 'after_refresh'; }
   static get UPDATE_SCORE() { return 'update_score'; }
   static get UPDATE_SERVER_STATISTICS() { return 'update_server_statistics'; }
   static get UPDATE_ZOOM() { return 'update_zoom'; }
@@ -37,6 +38,7 @@ class Storage {
 
     delete this._events[Storage.UPDATE_ZOOM];
     delete this._events[Storage.UPDATE_SCORE];
+    this.trigger(Storage.AFTER_REFRESH);
   }
 
   updateAsteroidData(asteroidData) {
