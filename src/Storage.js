@@ -26,7 +26,9 @@ class Storage {
     },
     playerData = {},
   ) {
-    if (this._playerId) {
+    const isDestroying = !!this._playerId;
+
+    if (isDestroying) {
       this.trigger(Storage.DISCONNECT, [this.playerData]);
     }
 
@@ -38,7 +40,10 @@ class Storage {
 
     delete this._events[Storage.UPDATE_ZOOM];
     delete this._events[Storage.UPDATE_SCORE];
-    this.trigger(Storage.AFTER_REFRESH);
+
+    if (isDestroying) {
+      this.trigger(Storage.AFTER_REFRESH);
+    }
   }
 
   updateAsteroidData(asteroidData) {
