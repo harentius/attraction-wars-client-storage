@@ -97,7 +97,7 @@ class Client {
     });
 
     this.hearbeatInterval = setInterval(() => {
-      this.socket.emit('heartbeat')
+      this.socket.emit('heartbeat');
     }, HEARTBEAT_INTERVAL);
   }
 
