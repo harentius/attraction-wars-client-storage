@@ -2,11 +2,14 @@ import io from 'socket.io-client';
 import parser from 'socket.io-msgpack-parser';
 import Storage from './Storage';
 
+const HEARTBEAT_INTERVAL = 30000;
+
 class Client {
   constructor(storage, serverUrl) {
     this.storage = storage;
     this.serverUrl = serverUrl;
     this.socket = null;
+    this.hearbeatInterval = null;
   }
 
   sendKeysPressState(keysPressState) {
@@ -92,11 +95,17 @@ class Client {
     this.socket.on('notification', (data) => {
       this.storage.trigger(Storage.NOTIFICATION, [data]);
     });
+
+    this.hearbeatInterval = setInterval(() => {
+      this.socket.emit('heartbeat')
+    }, HEARTBEAT_INTERVAL);
   }
 
   _disconnect() {
     this.storage.refresh();
     this.socket = null;
+    clearInterval(this.hearbeatInterval);
+    this.hearbeatInterval = null;
   }
 }
 
