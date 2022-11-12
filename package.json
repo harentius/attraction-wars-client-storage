@@ -25,7 +25,7 @@
     "eslint-plugin-import": "^2.18.2",
     "pre-commit": "^1.2.2",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8"
+    "webpack-cli": "^3.3.12"
   },
   "pre-commit": [
     "build-and-git-add"
